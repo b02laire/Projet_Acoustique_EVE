@@ -33,7 +33,7 @@ legend;
 ##tt=0.2:10000/441000:10000;
 ##
 ##f = fft(tt',y);
-save('couloirDbas_clap.m','y');
+save('C:/Users/alice/musique/Projet 3A/Projet_Acoustique_EVE/Mesures/Escalier/escalier_clap.m','y');
 
 
 

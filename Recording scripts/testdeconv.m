@@ -36,7 +36,7 @@ legend;
 ##tt=0.2:10000/441000:10000;
 ##
 ##f = fft(tt',y);
-save('couloirDbas_balayage.m','y');
+save('C:/Users/alice/musique/Projet 3A/Projet_Acoustique_EVE/Mesures/Escalier/escalier_balayage.m','y');
 
 
 
@@ -50,4 +50,3 @@ ifil=filter(b,a,i);
 figure();
 t=1:22000;
 plot (t',ifil(1:22000));
-load('couloirDbas_balayage_courbe.ofig');
