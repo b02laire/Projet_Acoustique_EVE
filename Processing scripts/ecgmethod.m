@@ -44,5 +44,10 @@ plot(babyresolve);
 
 cin=conv(in3,babyresolve);
 
+soundsc(in3)
 soundsc(cin,44100);
-soundsc(in3,44100);
+
+figure();
+plot(cin);hold on;
+plot(in3);
+legend;
