@@ -1,4 +1,5 @@
-clear all;close all;
+close all; clear all; 
+# On charge les données
 load('C:/Users/alice/musique/Projet 3A/Projet_Acoustique_EVE/Mesures/Couloir/couloir_clap2.m','y');
 in=y(:,2);
 out=y(:,1);
@@ -12,24 +13,36 @@ load('C:/Users/alice/musique/Projet 3A/Projet_Acoustique_EVE/Mesures/petitsalle/
 in4=y(:,2);
 out4=y(:,1);
 
-n=50;
- %filtrage
-[b,a]=butter(n,0.5); 
+##figure ();
+##subplot(2,1,1);
+##plot(ecgfoetus(:,1));
+##subplot(2,1,2);
+##plot(ecgfoetus(:,2));
 
-outf1=filter(b,a,out);
+p=50;
 
-outf2=filter(b,a,out2);
+rxy=xcorr(out,in,p-1);
+rxx=xcorr(in,in,p-1);
+rxy=rxy(p:end);
+rxx=rxx(p:end);
 
-outf3=filter(b,a,out3);
+Mxx=toeplitz(rxx);
 
-outf4=filter(b,a,out4);
+W=inv(Mxx)*rxy;
 
-D=deconvwnr(outf3,outf1);
+filtre=filter(W,1,in);
 
-D1=deconvwnr(outf4,outf2);
+babyresolve=out-filtre;
 
-Df=filter(b,a,D);
-Df1=filter(b,a,D1);
+figure ();
+subplot(3,1,1);
+plot(in);
+subplot(3,1,2);
+plot(out);
+subplot(3,1,3);
+plot(babyresolve);
 
-soundsc(Df,44100);
-soundsc(Df1,44100);
+cin=conv(in3,babyresolve);
+
+soundsc(cin,44100);
+soundsc(in3,44100);

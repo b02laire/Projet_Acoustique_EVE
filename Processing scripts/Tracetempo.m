@@ -15,7 +15,7 @@ out4=y(:,1);
 fs=44100;
 n=50;
  %filtrage
-[b,a]=butter(n,0.3);
+[b,a]=butter(n,0.5);
 
 outf1=filter(b,a,out);
 
@@ -24,8 +24,19 @@ outf2=filter(b,a,out2);
 outf3=filter(b,a,out3);
 
 outf4=filter(b,a,out4);
- 
 
+%écouter les mesures
+soundsc(out,44100); 
+soundsc(outf1,44100);
+
+soundsc(out2,44100);
+soundsc(outf2,44100);
+
+soundsc(out3,44100);
+soundsc(outf3,44100);
+
+soundsc(out4,44100);
+soundsc(outf4,44100); 
 
 
 
